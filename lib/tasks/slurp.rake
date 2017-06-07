@@ -16,8 +16,12 @@ namespace :slurp do
       p.image = row["image"]
       p.save
 
-    puts "#{p.retailer}, #{p.name}, #{p.brand}, #{p.description}, #{p.price}, #{p.link}, #{p.image} saved"
+     puts "#{p.retailer}, #{p.name}, #{p.brand}, #{p.description}, #{p.price}, #{p.link}, #{p.image} saved"
+
+    end
+    puts "There are now #{Product.count} rows in the products table"
+
+
 
   end
-puts "There are now #{Product.count} rows in the products table"
 end

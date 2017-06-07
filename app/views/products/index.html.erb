@@ -22,9 +22,12 @@
       <% @products.each do |product| %>
       <tr>
         <td><%= product.name %></td>
-        <td><%= product.image %></td>
+        <td><a href="/products/<%= product.id %>">
+        <img src="<%= product.image %>" class="img-responsive">
+        </a>
+        </td>
         <td><%= product.description %></td>
-        <td><%= product.link %></td>
+        <td><a href= "<%= product.link %>"><%= product.link %></a></td>
         <td><%= product.price %></td>
         <td><%= product.brand %></td>
         <td><%= product.retailer %></td>
