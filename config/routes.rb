@@ -65,4 +65,6 @@ Rails.application.routes.draw do
 
   post "/quick_create_like", :controller => "likes", :action => "create"
 
+  post "/quick_create_comment", :controller => "comments", :action => "create"
+
 end
