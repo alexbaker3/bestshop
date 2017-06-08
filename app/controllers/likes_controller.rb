@@ -26,7 +26,7 @@ class LikesController < ApplicationController
     save_status = @like.save
 
     if save_status == true
-      redirect_to("/likes/#{@like.id}", :notice => "Like created successfully.")
+      redirect_to("/products", :notice => "Like created successfully.")
     else
       render("likes/new.html.erb")
     end
@@ -64,4 +64,11 @@ class LikesController < ApplicationController
       redirect_to(:back, :notice => "Like deleted.")
     end
   end
+
+  def mywardrobe
+      @likes = Like.all
+      @product = Product.new
+      render("my_wardrobe.html.erb")
+    end
+
 end

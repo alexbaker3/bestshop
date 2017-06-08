@@ -1,7 +1,7 @@
 <div class="page-header">
   <h1>
     Products
-    <a href="/products/new" class="btn btn-lg btn-success">New Product</a>
+    <a href="/products/new" class="btn btn-lg btn-success"><i class="fa fa-plus" aria-hidden="true"></i></a>
   </h1>
 </div>
 
@@ -11,8 +11,6 @@
       <tr>
         <th>Name</th>
         <th>Image</th>
-        <th>Description</th>
-        <th>Link</th>
         <th>Price</th>
         <th>Brand</th>
         <th>Retailer</th>
@@ -23,18 +21,40 @@
       <tr>
         <td><%= product.name %></td>
         <td><a href="/products/<%= product.id %>">
-        <img src="<%= product.image %>" class="img-responsive">
-        </a>
-        </td>
-        <td><%= product.description %></td>
-        <td><a href= "<%= product.link %>"><%= product.link %></a></td>
+        <img src="<%= product.image %>" class="img-responsive"></a></td>
         <td><%= product.price %></td>
         <td><%= product.brand %></td>
         <td><%= product.retailer %></td>
         <td>
-          <a href="/products/<%= product.id %>" class="btn btn-primary">Show</a>
-          <a href="/products/<%= product.id %>/edit" class="btn btn-warning">Edit</a>
-          <a href="/delete_product/<%= product.id %>" class="btn btn-danger" rel="nofollow">Delete</a>
+          <a href="<%= product.link %>" class="btn btn-warning"><i class="fa fa-fw fa-shopping-cart"></i></a>
+        </td>
+        <td>
+
+          <% if current_user.liked_products.ids.include? product.id %>
+
+            <a href="/delete_like/<%= product.likes.find_by(:user_id => current_user.id).id %>"><i class="fa fa-heart"></i></a>
+
+            <% else %>
+
+            <form action="/quick_create_like" method="post">
+
+      <!-- Hidden input for authenticity token to protect from forgery -->
+            <input name="authenticity_token" type="hidden" value="<%= form_authenticity_token %>">
+
+            <!-- Label and input for user_id -->
+            <div class="form-group">
+              <input type="hidden" id="user_id" name="user_id" placeholder="User" class="form-control" value="<%= current_user.id %>">
+            </div>
+
+            <!-- Label and input for photo_id -->
+            <div class="form-group">
+              <input type="hidden" id="product_id" name="product_id" placeholder="Product" class="form-control" value="<%= product.id %>">
+            </div>
+            <button class="btn btn-link">
+              <i class="fa fa-heart-o"></i>
+            </button>
+          </form>
+          <% end %>
         </td>
       </tr>
       <% end %>
