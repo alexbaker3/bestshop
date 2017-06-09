@@ -1,43 +1,22 @@
-<div class="page-header">
-  <h3><%= @product.name %></h3>
-</div>
+
 
 <div class="row">
-  <div class="col-md-12 mb-2">
-    <dl class="dl-horizontal">
+  <div class="col-md-8 col-md-offset-2">
+    <div class="panel panel-default">
+      <div class="panel-heading"><h3 class="panel-title"><%= @product.name %></h3>
+      </div>
+      <div class="panel-body">
+        <a href="/products/<%= @product.id %>">
+        <img src="<%= @product.image %>" class="img-responsive">
+        </a>
+        <p>
+          <h6><i class="fa fa-fw fa-usd"></i><span class="hidden-sm"><%= @product.price %></span> <span>&nbsp &nbsp<a href="<%= @product.link %>" class="btn btn-warning"><i class="fa fa-fw fa-shopping-cart"></i></a></span></h6>
+        </p>
+        <p> <h6><span>Brand: &nbsp</span><%= @product.brand %><h6></p>
+        <p><h6><span>Retailer: &nbsp</span><%= @product.retailer %><h6></p>
+        <p><h6><%= @product.description %><h6></p>
+        <p><h6><a href="/products" class="btn btn-primary">Back</a><h6></p>
 
-      <dt>Image</dt>
-      <dd><a href="/products/<%= @product.id %>">
-      <img src="<%= @product.image %>" class="img-responsive">
-      </a></dd>
-
-      <dt>Description</dt>
-      <dd><%= @product.description %></dd>
-
-      <dt>Link</dt>
-      <dd><a href= "<%= @product.link %>"><%= @product.link %></a></dd>
-
-      <dt>Price</dt>
-      <dd><%= @product.price %></dd>
-
-      <dt>Brand</dt>
-      <dd><%= @product.brand %></dd>
-
-      <dt>Retailer</dt>
-      <dd><%= @product.retailer %></dd>
-
-    </dl>
-
-    <div class="btn-group btn-group-justified">
-      <a href="/products" class="btn btn-primary">
-        Back
-      </a>
-      <a href="/products/<%= @product.id %>/edit" class="btn btn-warning">
-        Edit
-      </a>
-      <a href="/delete_product/<%= @product.id %>" class="btn btn-danger" rel="nofollow">
-        Delete
-      </a>
     </div>
   </div>
 </div>

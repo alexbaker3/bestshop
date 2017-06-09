@@ -10,10 +10,10 @@
         <a href="/products/<%= product.id %>">
         <img src="<%= product.image %>" class="img-responsive" align="middle"></a>
         <p>
-          <h6><i class="fa fa-fw fa-usd"></i><span class="hidden-sm"><%= product.price %></span> <span><a href="<%= product.link %>" class="btn btn-warning"><i class="fa fa-fw fa-shopping-cart"></i></a></span></h6>
+          <h6><i class="fa fa-fw fa-usd"></i><span class="hidden-sm"><%= product.price %></span> <span>&nbsp &nbsp<a href="<%= product.link %>" class="btn btn-warning"><i class="fa fa-fw fa-shopping-cart"></i></a></span></h6>
         </p>
-        <p> <h6><span>Brand:<span><%= product.brand %><h6></p>
-        <p><h6><span>Retailer:<span><%= product.retailer %><h6></p>
+        <p> <h6><span>Brand: &nbsp</span><%= product.brand %><h6></p>
+        <p><h6><span>Retailer: &nbsp</span><%= product.retailer %><h6></p>
         <p>
 
 
@@ -21,6 +21,13 @@
 
             <a href="/delete_like/<%= product.likes.find_by(:user_id => current_user.id).id %>"><i class="fa fa-heart"></i></a>
 
+            <% if product.likes.count == 0 %>
+            <small class="text-muted">be the first to like this</small>
+            <% else %>
+            <% product.likes.each do |like| %>
+            <medium class="text-muted"><%= like.user.username %></medium>
+            <% end %>
+            <% end%>
             <% else %>
 
             <form action="/quick_create_like" method="post">
@@ -40,6 +47,8 @@
             <button class="btn btn-link">
               <i class="fa fa-heart-o"></i>
             </button>
+
+
           </form>
           <% end %>
 
