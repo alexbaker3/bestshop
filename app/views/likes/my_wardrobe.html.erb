@@ -17,8 +17,7 @@
         <p>
           <h6><i class="fa fa-fw fa-usd"></i><span class="hidden-sm"><%= like.product.price %></span> <span>&nbsp &nbsp<a href="<%= like.product.link %>" class="btn btn-warning"><i class="fa fa-fw fa-shopping-cart"></i></a></span></h6>
         </p>
-        <p> <h6><span>Brand: &nbsp</span><%= like.product.brand %><h6></p>
-        <p><h6><span>Retailer: &nbsp</span><%= like.product.retailer %><h6></p>
+        
         <p>
           <% if current_user.liked_products.ids.include? @product.id %>
           <a href="/delete_like/<%= @product.likes.find_by(:user_id => current_user.id).id %>"><i class="fa fa-heart"></i></a>
